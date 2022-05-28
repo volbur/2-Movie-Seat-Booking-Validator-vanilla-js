@@ -11,6 +11,7 @@ populateUI();
 let ticketPrice = +movieSelect.value;
 
 //Save selected movie index and price
+//FIXME: reload page - localeStorage dosnt work
 function setMovieData(movieIndex, moviePrice) {
     localStorage.setItem('selectedMovieIndex', movieIndex);
     localStorage.setItem('selectedMoviePrice', moviePrice);
