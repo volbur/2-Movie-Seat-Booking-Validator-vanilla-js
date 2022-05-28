@@ -1,7 +1,7 @@
 'use strict';
 
 const container = document.querySelector('.container');
-const seats = document.querySelector('.row .seats:not(.occupied)');
+const seats = document.querySelectorAll('.row .seats:not(.occupied)');
 const count = document.getElementById('count');
 const total = document.getElementById('total');
 const movieSelect = document.getElementById('movie');
@@ -20,7 +20,7 @@ function setMovieData(movieIndex, moviePrice) {
 function updateSelectedCount() {
     const selectedSeats = document.querySelectorAll('.row .seat.selected');
 
-    const seatIndex = [...selectedSeats].map(seat => [...seats].indexOf(seat));
+    const seatsIndex = [...selectedSeats].map(seat => [...seats].indexOf(seat));
 
     localStorage.setItem('selectedSeats', JSON.stringify(seatsIndex));
 
@@ -39,7 +39,7 @@ function populateUI() {
     if (selectedSeats !== null && selectedSeats.length > 0) {
         seats.forEach((seat, index) => {
             if (selectedSeats.indexOf(index) > -1) {
-                seat.classList.aad('selected');
+                seat.classList.add('selected');
             }
         });
     }
@@ -66,9 +66,9 @@ container.addEventListener('click', e => {
     ) {
         e.target.classList.toggle('selected');
 
-        updateSelectedCount()
+        updateSelectedCount();
     }
-})
+});
 
 // Initial count and total set
 updateSelectedCount();
